@@ -25,6 +25,14 @@ const employeeSchema = new mongoose.Schema({
     ContactNo :{
         type:String,
         require:true
+    },
+    Gender: {
+        type: String,
+        required: true
+    },
+    Age: {
+        type: String,
+        required: true
     }
 }, 
  { timestamps: true })

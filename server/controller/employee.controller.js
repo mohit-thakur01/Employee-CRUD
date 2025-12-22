@@ -10,7 +10,9 @@ const handleEmployeeDataController = async (req, res) => {
       !body.Sallary ||
       !body.Address ||
       !body.JoiningDate ||
-      !body.ContactNo
+      !body.ContactNo ||
+      !body.Gender ||
+      !body.Age
     ) {
       return res.status(400).json({
         sucess: false,
@@ -71,7 +73,7 @@ const handleEmployeeDeleteController = async (req, res) => {
     }
 
     return res.status(200).json({
-      success: true,
+      sucess: true,
       message: "Employee deleted successfully",
     });
   } catch (error) {
@@ -93,7 +95,7 @@ const handleemployeeListEditController = async (req, res) => {
     if (updating?.acknowledged) {
       return res.json({
         Message: "Employee Detail Updated Sucessfully",
-        success: true,
+        sucess: true,
       });
     }
   } catch (error) {

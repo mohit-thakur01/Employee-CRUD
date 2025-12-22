@@ -11,7 +11,11 @@ const Home = () => {
     Address: "",
     JoiningDate: "",
     ContactNo: "",
+    Gender: "",
+    Age: "",
   });
+
+
 
   const [employeeList, setEmployeeList] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -38,6 +42,8 @@ const Home = () => {
   };
 
 
+
+
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -47,7 +53,9 @@ const handleSubmit = async (e) => {
     !employeeForm.Sallary ||
     !employeeForm.Address ||
     !employeeForm.JoiningDate ||
-    !employeeForm.ContactNo
+    !employeeForm.ContactNo ||
+    !employeeForm.Gender ||
+    !employeeForm.Age
   ) {
     alert("All fields are required");
     return;
@@ -80,6 +88,8 @@ const handleSubmit = async (e) => {
         Address: "",
         JoiningDate: "",
         ContactNo: "",
+        Gender: "",
+        Age: "",
       });
 
       setIsUpdating(false);
@@ -121,6 +131,8 @@ const handleUpdate = (data) => {
     Address: data.Address,
     JoiningDate: data.JoiningDate,
     ContactNo: data.ContactNo,
+    Gender: data.Gender,
+    Age: data.Age,
   });
   setIsUpdating(true);
 };
@@ -214,6 +226,37 @@ const handleUpdate = (data) => {
           />
         </div>
 
+        <div className="flex flex-col">
+          <label className="text-sm font-medium text-gray-700 mb-1">
+            Gender
+          </label>
+          <select
+            className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            name="Gender"
+            value={employeeForm.Gender}
+            onChange={handleFormChange}
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-sm font-medium text-gray-700 mb-1">
+            Age
+          </label>
+          <input
+            type="number"
+            placeholder="Age"
+            className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            name="Age"
+            value={employeeForm.Age}
+            onChange={handleFormChange}
+          />
+        </div>
+
         <div className="lg:col-span-6 flex justify-end">
           <button
             onClick={handleSubmit}
@@ -247,6 +290,12 @@ const handleUpdate = (data) => {
               <th className="border border-gray-300 px-6 py-3 text-left text-sm font-medium text-gray-700">
                 Contact No.
               </th>
+              <th className="border border-gray-300 px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Gender
+              </th>
+              <th className="border border-gray-300 px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Age
+              </th>
               <th className="border border-gray-300 px-6 py-3 text-left text-sm font-medium text-gray-700"></th>
             </tr>
           </thead>
@@ -272,6 +321,12 @@ const handleUpdate = (data) => {
                   </td>
                   <td className="border border-gray-300 px-6 py-3 whitespace-nowrap">
                     {Employee?.ContactNo}
+                  </td>
+                  <td className="border border-gray-300 px-6 py-3 whitespace-nowrap">
+                    {Employee?.Gender}
+                  </td>
+                  <td className="border border-gray-300 px-6 py-3 whitespace-nowrap">
+                    {Employee?.Age}
                   </td>
                   <td className="border border-gray-300 px-6 py-3 whitespace-nowrap text-center">
                     <div className="flex gap-4 justify-center items-center">
