@@ -1,6 +1,6 @@
 const express = require('express');
 const databaseConnection = require('./database')
-const EmployeeRouter = require('./routes/book.routes')
+const EmployeeRouter = require('./routes/employee.routes')
 const cors = require("cors")
 // database Connection
 databaseConnection();
